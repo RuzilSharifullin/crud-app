@@ -12,5 +12,5 @@ public interface MealRepository {
 
     Meal save(Meal meal, int userId);
 
-    boolean delete(Meal meal, int userId);
+    boolean delete(int id, int userId);
 }

@@ -4,16 +4,16 @@ import java.time.LocalDateTime;
 
 public class Meal {
     Integer id;
-    LocalDateTime localDateTime;
+    LocalDateTime dateTime;
     String description;
     Integer calories;
 
     public Meal() {
     }
 
-    public Meal(Integer id, LocalDateTime localDateTime, String description, Integer calories) {
+    public Meal(Integer id, LocalDateTime dateTime, String description, Integer calories) {
         this.id = id;
-        this.localDateTime = localDateTime;
+        this.dateTime = dateTime;
         this.description = description;
         this.calories = calories;
     }
@@ -22,8 +22,8 @@ public class Meal {
         return id;
     }
 
-    public LocalDateTime getLocalDateTime() {
-        return localDateTime;
+    public LocalDateTime getDateTime() {
+        return dateTime;
     }
 
     public String getDescription() {
@@ -38,8 +38,8 @@ public class Meal {
         this.id = id;
     }
 
-    public void setLocalDateTime(LocalDateTime localDateTime) {
-        this.localDateTime = localDateTime;
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
     }
 
     public void setDescription(String description) {
@@ -48,5 +48,19 @@ public class Meal {
 
     public void setCalories(Integer calories) {
         this.calories = calories;
+    }
+
+    public boolean isNew() {
+        return this.id == null;
+    }
+
+    @Override
+    public String toString() {
+        return "Meal{" +
+                "id=" + id +
+                ", dateTime=" + dateTime +
+                ", description='" + description + '\'' +
+                ", calories=" + calories +
+                '}';
     }
 }
