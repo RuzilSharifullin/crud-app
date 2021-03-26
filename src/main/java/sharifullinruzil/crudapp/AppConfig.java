@@ -8,10 +8,11 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 @Configuration
-@ComponentScan("sharifullinruzil.crudapp.repository")
+@ComponentScan({"sharifullinruzil.crudapp.service", "sharifullinruzil.crudapp.repository"})
 @PropertySource("classpath:postgres.properties")
 public class AppConfig {
 
@@ -31,5 +32,10 @@ public class AppConfig {
     @Bean
     NamedParameterJdbcTemplate namedParameterJdbcTemplate() {
         return new NamedParameterJdbcTemplate(jdbcTemplate());
+    }
+
+    @Bean
+    DataSourceTransactionManager dataSourceTransactionManager() {
+        return new DataSourceTransactionManager(dataSource());
     }
 }
