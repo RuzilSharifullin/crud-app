@@ -1,5 +1,6 @@
 package sharifullinruzil.crudapp.domain;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Meal {
@@ -24,6 +25,10 @@ public class Meal {
 
     public LocalDateTime getDateTime() {
         return dateTime;
+    }
+
+    public LocalDate getDate() {
+        return this.dateTime.toLocalDate();
     }
 
     public String getDescription() {
