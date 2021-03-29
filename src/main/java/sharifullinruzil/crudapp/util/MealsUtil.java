@@ -11,13 +11,13 @@ import java.util.stream.Collectors;
 
 public class MealsUtil {
 
-    public static List<MealDto> getConvertedToDto(Collection<Meal> meals, int dailyCalorieLimit) {
+    public static List<MealDto> getConvertedToDto(Collection<Meal> meals, int targetCalories) {
 
         Map<LocalDate, Integer> totalCaloriesPerDay = meals.stream().
                 collect(Collectors.groupingBy(Meal::getDate, Collectors.summingInt(Meal::getCalories)));
 
         return meals.stream().
-                map(meal -> createDto(meal, totalCaloriesPerDay.get(meal.getDate()) > dailyCalorieLimit)).
+                map(meal -> createDto(meal, totalCaloriesPerDay.get(meal.getDate()) > targetCalories)).
                 collect(Collectors.toList());
     }
 
