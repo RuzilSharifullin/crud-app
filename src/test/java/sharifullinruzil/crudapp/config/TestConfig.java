@@ -1,4 +1,4 @@
-package sharifullinruzil.crudapp;
+package sharifullinruzil.crudapp.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -7,12 +7,13 @@ import org.springframework.core.io.Resource;
 import org.springframework.jdbc.datasource.init.DataSourceInitializer;
 import org.springframework.jdbc.datasource.init.DatabasePopulator;
 import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
+import sharifullinruzil.crudapp.config.AppConfig;
 
 import javax.sql.DataSource;
 
 @Configuration
 @Import(AppConfig.class)
-public class TestDBConfig {
+public class TestConfig {
 
     @Autowired
     DataSource dataSource;
