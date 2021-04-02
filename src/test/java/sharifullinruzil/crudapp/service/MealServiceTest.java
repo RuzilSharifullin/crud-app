@@ -10,7 +10,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
-import sharifullinruzil.crudapp.TestDBConfig;
+import sharifullinruzil.crudapp.config.TestConfig;
 import sharifullinruzil.crudapp.domain.Meal;
 import sharifullinruzil.crudapp.util.NotFoundException;
 
@@ -22,7 +22,7 @@ import static sharifullinruzil.crudapp.MealTestData.*;
 
 
 @ExtendWith(SpringExtension.class)
-@ContextConfiguration(classes = {TestDBConfig.class})
+@ContextConfiguration(classes = {TestConfig.class})
 @Transactional
 @Rollback
 class MealServiceTest {
