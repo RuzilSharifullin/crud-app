@@ -34,14 +34,14 @@ public class RestMealController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void create(Meal meal) {
+    public void create(@RequestBody Meal meal) {
         int userId = getAuthenticatedUserId();
         mealService.create(meal, userId);
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void update(Meal meal, @PathVariable int id) {
+    public void update(@RequestBody Meal meal, @PathVariable int id) {
         int userId = getAuthenticatedUserId();
         mealService.update(meal, userId);
     }
