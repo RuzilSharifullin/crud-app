@@ -9,9 +9,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import javax.validation.Validator;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
@@ -19,6 +21,11 @@ import java.util.List;
 @EnableWebMvc
 @ComponentScan("sharifullinruzil.crudapp.web")
 public class MvcConfig implements WebMvcConfigurer {
+
+    @Bean
+    public Validator localValidatorFactoryBean() {
+        return new LocalValidatorFactoryBean();
+    }
 
     @Bean
     public ObjectMapper objectMapper() {

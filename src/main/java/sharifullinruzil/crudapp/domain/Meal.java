@@ -1,12 +1,20 @@
 package sharifullinruzil.crudapp.domain;
 
+import org.hibernate.validator.constraints.Range;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Meal {
     Integer id;
+    @NotNull
     LocalDateTime dateTime;
+    @NotBlank
     String description;
+    @NotNull
+    @Range(min = 10, max = 3000)
     Integer calories;
 
     public Meal() {
