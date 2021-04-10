@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 import sharifullinruzil.crudapp.config.TestConfig;
 import sharifullinruzil.crudapp.domain.Meal;
-import sharifullinruzil.crudapp.util.NotFoundException;
+import sharifullinruzil.crudapp.util.exception.NotFoundException;
 
 import java.util.List;
 

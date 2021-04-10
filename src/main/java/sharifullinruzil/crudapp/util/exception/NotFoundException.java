@@ -1,4 +1,4 @@
-package sharifullinruzil.crudapp.util;
+package sharifullinruzil.crudapp.util.exception;
 
 public class NotFoundException extends RuntimeException {
 

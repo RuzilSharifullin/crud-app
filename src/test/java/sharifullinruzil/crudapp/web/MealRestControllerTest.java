@@ -28,7 +28,7 @@ import static sharifullinruzil.crudapp.MealTestData.*;
 @SpringJUnitWebConfig(classes = {TestConfig.class, MvcConfig.class})
 @Transactional
 @Rollback
-class RestMealControllerTest {
+class MealRestControllerTest {
 
     @Autowired
     private WebApplicationContext webApplicationContext;

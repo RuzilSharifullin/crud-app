@@ -1,5 +1,9 @@
 package sharifullinruzil.crudapp.util;
 
+import org.springframework.core.NestedExceptionUtils;
+import org.springframework.lang.NonNull;
+import sharifullinruzil.crudapp.util.exception.NotFoundException;
+
 public class ValidationUtil {
 
     public static <T> T checkIfNotFound(T object, int id) {
@@ -15,5 +19,10 @@ public class ValidationUtil {
         if (!found) {
             throw new NotFoundException("Unable to find entity with " + msg);
         }
+    }
+
+    public static Throwable getRootCause(Throwable t) {
+        Throwable rootCause = NestedExceptionUtils.getRootCause(t);
+        return rootCause != null ? rootCause : t;
     }
 }
