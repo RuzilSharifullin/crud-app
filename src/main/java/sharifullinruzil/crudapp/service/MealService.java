@@ -30,6 +30,7 @@ public class MealService {
 
 
     public Meal create(Meal meal, int userId) {
+        Assert.notNull(meal, "the meal must not be null");
         return mealRepository.save(meal, userId);
     }
 
@@ -38,6 +39,7 @@ public class MealService {
     }
 
     public void update(Meal meal, int userId) {
+        Assert.notNull(meal, "the meal must not be null");
         checkIfNotFound(mealRepository.save(meal, userId), meal.getId());
     }
 }
