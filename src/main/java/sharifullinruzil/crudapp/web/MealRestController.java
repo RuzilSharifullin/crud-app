@@ -1,5 +1,7 @@
 package sharifullinruzil.crudapp.web;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
@@ -23,7 +25,9 @@ import static sharifullinruzil.crudapp.SecurityUtil.getAuthenticatedUserTargetCa
 
 @RestController
 @RequestMapping(value = "/rest/meals", produces = MediaType.APPLICATION_JSON_VALUE)
-public class RestMealController {
+public class MealRestController {
+
+    private static final Logger log = LoggerFactory.getLogger(MealRestController.class);
 
     @Autowired
     private MealService mealService;
@@ -31,18 +35,21 @@ public class RestMealController {
     @GetMapping("/{id}")
     public Meal get(@PathVariable int id) {
         int userId = getAuthenticatedUserId();
+        log.info("get meal {} for user {}", id, userId);
         return mealService.get(id, userId);
     }
 
     @GetMapping
     public List<MealDto> getAll() {
         int userId = getAuthenticatedUserId();
+        log.info("getAll for user {}", userId);
         return MealsUtil.getConvertedToDto(mealService.getAll(userId), getAuthenticatedUserTargetCalories());
     }
 
     @PostMapping
     public ResponseEntity<Meal> create(@Valid @RequestBody Meal meal) {
         int userId = getAuthenticatedUserId();
+        log.info("create {} for user {}", meal, userId);
         Meal created = mealService.create(meal, userId);
         URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/rest/meals/{id}")
@@ -55,6 +62,7 @@ public class RestMealController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void update(@Valid @RequestBody Meal meal, @PathVariable int id) {
         int userId = getAuthenticatedUserId();
+        log.info("update {} for user {}", meal, userId);
         mealService.update(meal, userId);
     }
 
@@ -62,27 +70,8 @@ public class RestMealController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable int id) {
         int userId = getAuthenticatedUserId();
+        log.info("delete meal {} for user {}", id, userId);
         mealService.delete(id, userId);
     }
 
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
-    @ResponseBody
-    public String validationError(MethodArgumentNotValidException ex) {
-        return "MethodArgumentNotValidException!!!";
-    }
-
-    @ExceptionHandler(DataIntegrityViolationException.class)
-    @ResponseStatus(HttpStatus.CONFLICT)
-    @ResponseBody
-    public String uniqueConstraintError(DataIntegrityViolationException ex) {
-        return "DataIntegrityViolationException!!!";
-    }
-
-    @ExceptionHandler(NotFoundException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    @ResponseBody
-    public String notFoundError(NotFoundException ex) {
-        return "NotFoundException!!!";
-    }
 }

@@ -1,7 +1,6 @@
 package sharifullinruzil.crudapp.util;
 
 import org.springframework.core.NestedExceptionUtils;
-import org.springframework.lang.NonNull;
 import sharifullinruzil.crudapp.util.exception.NotFoundException;
 
 public class ValidationUtil {

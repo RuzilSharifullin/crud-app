@@ -1,6 +1,7 @@
 package sharifullinruzil.crudapp.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.MethodInvokingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -37,5 +38,12 @@ public class AppConfig {
     @Bean
     DataSourceTransactionManager dataSourceTransactionManager() {
         return new DataSourceTransactionManager(dataSource());
+    }
+
+    @Bean
+    MethodInvokingBean julToSlf4j() {
+        MethodInvokingBean methodInvokingBean = new MethodInvokingBean();
+        methodInvokingBean.setStaticMethod("org.slf4j.bridge.SLF4JBridgeHandler.install");
+        return methodInvokingBean;
     }
 }
