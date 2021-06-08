@@ -1,5 +1,6 @@
 package sharifullinruzil.crudapp.domain;
 
+import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.validator.constraints.Range;
 
 import javax.validation.constraints.NotBlank;
@@ -8,6 +9,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Meal {
+    @ApiModelProperty(example = "null")
     Integer id;
     @NotNull
     LocalDateTime dateTime;

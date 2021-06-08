@@ -3,18 +3,15 @@ package sharifullinruzil.crudapp.web;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import sharifullinruzil.crudapp.domain.Meal;
 import sharifullinruzil.crudapp.dto.MealDto;
 import sharifullinruzil.crudapp.service.MealService;
 import sharifullinruzil.crudapp.util.MealsUtil;
-import sharifullinruzil.crudapp.util.exception.NotFoundException;
 
 import javax.validation.Valid;
 import java.net.URI;
@@ -24,7 +21,7 @@ import static sharifullinruzil.crudapp.SecurityUtil.getAuthenticatedUserId;
 import static sharifullinruzil.crudapp.SecurityUtil.getAuthenticatedUserTargetCalories;
 
 @RestController
-@RequestMapping(value = "/rest/meals", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/meals", produces = MediaType.APPLICATION_JSON_VALUE)
 public class MealRestController {
 
     private static final Logger log = LoggerFactory.getLogger(MealRestController.class);
